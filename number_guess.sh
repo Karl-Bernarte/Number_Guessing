@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# This is a test change
+
 PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 SECRET_NUMBER=$(( $RANDOM % 1000 + 1 ))
 echo "Enter your username: "
