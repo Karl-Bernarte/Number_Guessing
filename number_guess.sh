@@ -8,7 +8,9 @@ RETURNING_USER=$($PSQL "SELECT username FROM users WHERE username = $USERNAME")
 
 if [[ -z $RETURNING_USER ]]
 then
+  echo "Welcome, $USERNAME! It looks like this is your first time here."
   INSERTED_USER=$($PSQL "INSERT INTO users (username) VALUES ('$USERNAME')")
+  
 else
 GAMES_PLAYED=$($PSQL "SELECT COUNT(*) FROM games INNER JOIN USING(user_id) WHERE username = $USERNAME")
 BEST_GAME=$($PSQL "SELECT MIN(guesses) FROM games INNER JOIN USING(user_id) WHERE username = $USERNAME")
